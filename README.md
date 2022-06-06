@@ -23,8 +23,7 @@ $ python3 -m venv ./venv --prompt portfolio
 A path starting with a leading dot (.) indicates that it’s relative to the current working directory. While not mandatory, this dot clearly shows your intent. Either way, this command should create a venv subdirectory in your portfolio-project root directory:
 
 django-heroku/
-│
-└── venv/
+	- venv/
 This new subdirectory contains a copy of the Python interpreter along with a few management scripts. You’re now ready to install project dependencies into it.
 
 ### Install Dependencies
@@ -80,18 +79,15 @@ If you’re getting a command not found error or ModuleNotFound exception, then 
 Afterward, you should have this directory layout:
 
 django-heroku/
-│
-├── mysite/
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-│
-├── venv/
-│
-├── manage.py
-└── requirements.txt
+	- mysite/
+		- __init__.py
+		- asgi.py
+		- settings.py
+		- urls.py
+		- wsgi.py
+	- venv/
+	- manage.py
+	- requirements.txt
 
 
 You created a management app named mysite, which contains project-level settings and the main file with URL patterns, among a few other things. You also created the manage.py script that conveniently wraps django-admin and hooks up to your project.
@@ -111,3 +107,17 @@ It will start the server on localhost port 8000 by default. You can adjust the p
 localhost:8000  or http://127.0.0.1:8000/
 
 ### Upload The Django Project To GitHub
+
+Now that you have a working Django project in place, it’s time to take the next step towards hosting it in the cloud. In this section, You’ll create a local Git repository for your project. At the end of this step, you’ll be ready to deep dive into the Heroku toolchain.
+
+Use the following commandline code to push your codes to your GitHub repository
+
+$ git init
+
+It doesn’t matter whether your virtual environment is active or not for this to work. It should create a new .git subfolder, which will contain the history of the files tracked by Git. Folders whose names start with a dot are hidden on macOS and Linux. If you want to check that you created it successfully, then use the ls -a command to see this folder.
+
+It’s useful to tell Git which files to ignore so that it doesn’t track them anymore. Some files shouldn’t be part of the repository. You should usually ignore IDE and code editor settings, configuration files with sensitive data such as passwords, binary files like the Python virtual environment, cache files, and data like the SQLite database.
+
+When you check the current status of your new Git repository, it will list all files present in the working directory and suggest adding them to the repository:
+
+$ git status
